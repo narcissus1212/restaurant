@@ -1,14 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+    const orderList = document.getElementById("order-list");
+    const tableInput = document.getElementById("table");
+    const submitOrderBtn = document.getElementById("submit-order");
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const tableNumber = document.getElementById("table").value;
-        if (tableNumber) {
-            alert("Order received for Table " + tableNumber);
-            // Here you would send the table number to the backend or the robot
-        } else {
-            alert("Please enter a valid table number.");
+    document.querySelectorAll(".add-to-order").forEach(button => {
+        button.addEventListener("click", function () {
+            const itemName = this.parentElement.getAttribute("data-name");
+            addItemToOrder(itemName);
+        });
+    });
+
+    function addItemToOrder(item) {
+        const li = document.createElement("li");
+        li.textContent = item;
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", function () {
+            li.remove();
+        });
+        li.appendChild(removeBtn);
+        orderList.appendChild(li);
+    }
+
+    submitOrderBtn.addEventListener("click", function () {
+        const orderItems = [];
+        document.querySelectorAll("#order-list li").forEach(li => {
+            orderItems.push(li.textContent.replace("Remove", "").trim());
+        });
+
+        const tableNumber = tableInput.value;
+        if (orderItems.length === 0 || !tableNumber) {
+            alert("Please add items to your order and enter your table number.");
+            return;
         }
+
+        alert(`Order Submitted!\nTable: ${tableNumber}\nItems: ${orderItems.join(", ")}`);
     });
 });
