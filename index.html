@@ -18,25 +18,27 @@
             <div class="item">
                 <img src="https://www.savingdessert.com/wp-content/uploads/2014/06/Pizza-Dough-15-300x200.jpg" alt="Pizza">
                 <h3>Delicious Pizza</h3>
+                <button class="add-to-order">Add to Order</button>
             </div>
             <div class="item">
                 <img src="https://stovallsinn.com/wp-content/uploads/sites/70/2017/04/Burger-300x200.jpg" alt="Burger">
                 <h3>Juicy Burger</h3>
+                <button class="add-to-order">Add to Order</button>
             </div>
             <div class="item">
                 <img src="https://www.zizzi.co.uk/propeller/uploads/2022/07/casareccia-pollo-piccante-300x200.jpg" alt="Pasta">
                 <h3>Classic Pasta</h3>
+                <button class="add-to-order">Add to Order</button>
             </div>
         </div>
     </section>
     
     <section class="order">
-        <h2>Place Your Order</h2>
-        <form>
-            <label for="table">Enter Your Table Number:</label>
-            <input type="number" id="table" name="table" required>
-            <button type="submit">Submit</button>
-        </form>
+        <h2>Your Order</h2>
+        <ul id="order-list"></ul>
+        <label for="table">Enter Your Table Number:</label>
+        <input type="number" id="table" name="table" required>
+        <button id="submit-order">Submit Order</button>
     </section>
     
     <section class="reviews">
