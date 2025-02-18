@@ -55,5 +55,22 @@
         <p>&copy; 2025 Restaurant. All rights reserved.</p>
     </footer>
     <script src="restaurant.js"></script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".add-to-order").forEach(button => {
+                button.addEventListener("click", function () {
+                    const itemName = this.parentElement.getAttribute("data-name");
+                    addToLocalStorage(itemName);
+                    window.location.href = "order.html"; // Redirect to order page
+                });
+            });
+    
+            function addToLocalStorage(item) {
+                let orders = JSON.parse(localStorage.getItem("orders")) || [];
+                orders.push(item);
+                localStorage.setItem("orders", JSON.stringify(orders));
+            }
+        });
+    </script>
 </body>
 </html>
